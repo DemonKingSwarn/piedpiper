@@ -50,7 +50,7 @@ cd piedpiper
 python app.py
 ```
 
-3. Open your web browser and go to `http://localhost:5000` to access the website.
+3. Open your web browser and go to `http://localhost:3000` to access the website.
 
 ## Inspiration
 
