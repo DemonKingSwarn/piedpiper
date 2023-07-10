@@ -37,10 +37,10 @@ def compress():
         compressed_image = compress_image(image)
 
         # Generate a new filename for the compressed image
-        compressed_filename = f"compressed_{file.filename}"
+        compressed_filename = f"compressed_{os.path.splitext(file.filename)[0]}"
 
         # Save the compressed image
-        compressed_filepath = os.path.join(app.config['UPLOAD_FOLDER'], compressed_filename)
+        compressed_filepath = os.path.join(app.config['UPLOAD_FOLDER'], f'{compressed_filename}.jpg')
         compressed_image.save(compressed_filepath)
 
         # Delete the temporary file
@@ -51,7 +51,7 @@ def compress():
 
 @app.route('/display/<filename>')
 def display(filename):
-    compressed_image_path = url_for('static', filename=f"compressed_images/{filename}")
+    compressed_image_path = url_for('static', filename=f"compressed_images/{filename}.jpg")
     return render_template('display.html', compressed_image=compressed_image_path)
 
 def allowed_file(filename):
