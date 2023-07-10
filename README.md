@@ -1,4 +1,4 @@
-# Lossless Image Compression Website
+# PiedPiper
 
 This is a lossless image compression website that allows users to compress images without compromising quality. The project is implemented using Python and the Flask web framework.
 
