@@ -1,0 +1,66 @@
+/* styles.css */
+
+/* Body and container */
+body {
+  background-color: #f1f1f1;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8e6e6;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #f368b5;
+}
+
+/* Form */
+form {
+  margin-top: 20px;
+}
+
+input[type="file"] {
+  display: block;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #f368b5;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  background-color: #f368b5;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #ee4d9a;
+}
+
+/* Compressed image display */
+.compressed-image {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.compressed-image img {
+  max-width: 100%;
+}
+
+/* Error message */
+.error-message {
+  color: #f00;
+  font-size: 14px;
+  margin-top: 10px;
+}
