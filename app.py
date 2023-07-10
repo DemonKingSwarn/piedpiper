@@ -18,16 +18,12 @@ def compress_image(image):
 def compress_image(image):
     compressed_image = image.copy()
 
-    # Get the pixel values of the image
     pixel_values = list(image.getdata())
 
-    # Convert pixel values to integers
     flattened_pixels = [p for pixel in pixel_values for p in pixel]
 
-    # Convert integers to bytes
     byte_values = bytes(flattened_pixels)
 
-    # Create a new PIL image from the byte values
     compressed_image.frombytes(byte_values)
 
     return compressed_image
@@ -50,27 +46,20 @@ def compress():
         return redirect(url_for('upload_form'))
 
     if file and allowed_file(file.filename):
-        # Save the uploaded file to a temporary location
         temp_filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(temp_filepath)
 
-        # Open the uploaded image using PIL
         image = Image.open(temp_filepath)
 
-        # Compress the image
         compressed_image = compress_image(image)
 
-        # Generate a new filename for the compressed image
         compressed_filename = f"compressed_{os.path.splitext(file.filename)[0]}"
 
-        # Save the compressed image
         compressed_filepath = os.path.join(app.config['UPLOAD_FOLDER'], f'{compressed_filename}.jpg')
         compressed_image.save(compressed_filepath)
 
-        # Delete the temporary file
         os.remove(temp_filepath)
 
-        # Redirect to the display page with the compressed image
         return redirect(url_for('display', filename=compressed_filename))
 
 @app.route('/display/<filename>')
