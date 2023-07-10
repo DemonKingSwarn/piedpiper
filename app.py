@@ -1,13 +1,10 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from PIL import Image
-import time
-import threading
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/compressed_images'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
-app.config['TEMP_FILE_EXPIRATION'] = 3600  # 1 hour in seconds
 
 
 """
@@ -72,9 +69,6 @@ def compress():
 
         # Delete the temporary file
         os.remove(temp_filepath)
-         # Start a thread to delete the file after the timeout
-        timeout_thread = threading.Thread(target=delete_file_after_timeout, args=(compressed_filepath, app.config['TEMP_FILE_EXPIRATION']))
-        timeout_thread.start()
 
         # Redirect to the display page with the compressed image
         return redirect(url_for('display', filename=compressed_filename))
